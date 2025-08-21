@@ -175,7 +175,7 @@ function RootLayoutInner({ children }) {
         <div
           className="absolute top-2 right-0 left-0 z-40 pt-14"
           aria-hidden={expanded ? 'true' : undefined}
-          inert={expanded ? '' : undefined}
+          inert={expanded ? true : undefined}
         >
           <Header
             panelId={panelId}
@@ -198,7 +198,7 @@ function RootLayoutInner({ children }) {
           style={{ height: expanded ? 'auto' : '0.5rem' }}
           className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
           aria-hidden={expanded ? undefined : 'true'}
-          inert={expanded ? undefined : ''}
+          inert={expanded ? undefined : true}
         >
           <motion.div layout className="bg-neutral-800">
             <div ref={navRef} className="bg-neutral-950 pt-14 pb-16">
