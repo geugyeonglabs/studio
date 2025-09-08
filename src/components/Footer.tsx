@@ -5,6 +5,8 @@ import { FadeIn } from '@/components/FadeIn'
 import { Logo } from '@/components/Logo'
 import { socialMediaProfiles } from '@/components/SocialMedia'
 
+import { addNewsletterEmail } from '@/utils/supabase/server'
+
 const navigation = [
   {
     title: 'Work',
@@ -79,8 +81,14 @@ function ArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 function NewsletterForm() {
+  const handleAction = async (formData: FormData) => {
+    const email = formData.get('email')
+
+    addNewsletterEmail(email)
+  }
+
   return (
-    <form className="max-w-sm">
+    <form className="max-w-sm" action={handleAction}>
       <h2 className="font-display text-sm font-semibold tracking-wider text-neutral-950">
         Sign up for our newsletter
       </h2>
@@ -95,6 +103,8 @@ function NewsletterForm() {
           autoComplete="email"
           aria-label="Email address"
           className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pr-20 pl-6 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:ring-neutral-950/5 focus:outline-hidden"
+          name="email"
+          required
         />
         <div className="absolute inset-y-1 right-1 flex justify-end">
           <button
